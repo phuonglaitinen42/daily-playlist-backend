@@ -29,6 +29,11 @@ app.use(express.json());
 //set Username router to use default route.
 app.use('/usernames', usernameRouter);
 
-app.listen(PORT, function() {
-    console.log(`Listening on port ${PORT}`)
+app.get('/api', (req, res, next) => {
+    res.send('API status: Running')
+});
+
+
+app.listen(PORT, function(){
+    console.log(`Listening on port ${PORT}`);
 });
