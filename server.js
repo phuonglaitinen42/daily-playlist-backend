@@ -3,7 +3,6 @@ const express = require('express');
 const PORT = process.env.PORT || 3001
 const app = express();
 const mongoose = require('mongoose');
-const db = mongoose.connection
 const usernameRouter = require('./api/usernames/username.router');
 const FRONTEND_ORIGIN = "http://localhost:3000";
 // storing MongoDB username and password
