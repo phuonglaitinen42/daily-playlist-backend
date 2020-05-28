@@ -3,13 +3,14 @@ const express = require('express');
 const PORT = process.env.PORT || 3001
 const app = express();
 const mongoose = require('mongoose');
+const db = mongoose.connection
 const usernameRouter = require('./api/usernames/username.router');
 const FRONTEND_ORIGIN = "http://localhost:3000";
 // storing MongoDB username and password
-//require('dotenv').config();
-//var URL = process.env.MONGOLAB_URI
+require('dotenv').config();
+var URL = process.env.MONGOLAB_URI
 // Connection to our Database
-mongoose.connect('mongodb+srv://Otsolap:SpotifyTeamPW20K@hbc-node-course-av3rd.mongodb.net/test?retryWrites=true&w=majority',
+mongoose.connect(URL,
 // will make code into json
 { useNewUrlParser: true }, () =>
 console.log('Connected to DB!')
