@@ -14,6 +14,10 @@ mongoose.connect(URL,
 { useNewUrlParser: true }, () =>
 console.log('Connected to DB!')
 );
+// making sure MongoDB is active.
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'DB connection error: '));
+db.on('open', console.log.bind(console, 'Connected to MongoDB!'));
 
 
 // Chrome does ajax calls.
