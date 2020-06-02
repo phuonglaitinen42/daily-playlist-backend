@@ -22,22 +22,21 @@
 //     });
 //   });
 
-document
-  .getElementById("search-btn")
-  .addEventListener("click", function (event) {
-    event.preventDefault();
-    const getCall = async () => {
-      const response = await fetch(
-        "https://api.spotify.com/v1/search?query=%22doom%22&type=playlist&offset=0&limit=20",
-        {
-          method: "GET",
-          headers: {
-            "content-type": "application/json",
-            authorization: "Bearer access_token",
-          },
-        }
-      );
-      const myJson = await response.json(); //extract JSON from the http response
-      // do something with myJson
-    };
-  });
+document.getElementById("search-btn");
+console.log("search-bnt").addEventListener("click", function (event) {
+  event.preventDefault();
+  const getCall = async () => {
+    const response = await fetch(
+      "https://api.spotify.com/v1/search?query=%22doom%22&type=playlist&offset=0&limit=20",
+      {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          authorization: "Bearer access_token",
+        },
+      }
+    );
+    const myJson = await response.json(); //extract JSON from the http response
+    // do something with myJson
+  };
+});
