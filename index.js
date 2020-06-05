@@ -1,12 +1,16 @@
 var express = require("express"); // Express web server framework
 var request = require("request"); // "Request" library
+var server = require("server"); // require server.js
+app.use(server); // mount server.js as a sub-app.
 var cors = require("cors");
 var querystring = require("querystring");
 var cookieParser = require("cookie-parser");
+const PORT = process.env.PORT || 3001
 
+// Request .env details from Team-chat.
 var client_id = process.env.SPOTIFY_CLIENT_ID
 var client_secret = process.env.SPOTIFY_CLIENT_SECRET
-var client_redirect_uri = process.env.SPOTIFY_REDIRECT_URI
+var redirect_uri = process.env.SPOTIFY_REDIRECT_URI
 
 /**
  * Generates a random string containing numbers and letters
@@ -146,5 +150,6 @@ app.get("/refresh_token", function (req, res) {
   });
 });
 
-console.log("Listening on 8888");
-app.listen(8888);
+app.listen(PORT, function(){
+  console.log(`Listening on port ${PORT}`);
+});

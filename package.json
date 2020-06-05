@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"nodemon server.js\" \"nodemon index.js\"" 
+    "start": "nodemon index.js" 
   },
   "author": "Laitinen, Lappalainen, Pham",
   "license": "ISC",
