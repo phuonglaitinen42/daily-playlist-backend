@@ -38,6 +38,4 @@ app.get('/api', (req, res, next) => {
 });
 
 
-app.listen(PORT, function(){
-    console.log(`Listening on port ${PORT}`);
-});
+module.exports = server

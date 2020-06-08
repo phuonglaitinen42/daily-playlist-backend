@@ -40,3 +40,5 @@ console.log("search-bnt").addEventListener("click", function (event) {
     // do something with myJson
   };
 });
+
+module.exports = call
