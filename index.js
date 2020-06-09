@@ -3,7 +3,11 @@ var request = require("request"); // "Request" library
 var cors = require("cors");
 var querystring = require("querystring");
 var cookieParser = require("cookie-parser");
-
+const mongoose = require("mongoose");
+const PORT = process.env.PORT || 3001;
+var URL = process.env.MONGOLAB_URI;
+const FRONTEND_ORIGIN = "http://localhost:3000";
+const genreRouter = require("./api/genre/genre.router");
 var client_id = "5a2f9ddd57784db0aab3f4179a994b1f"; // Your client id
 var client_secret = "5789e56a60434810aaa2396de20e04ec"; // Your secret
 var redirect_uri = "http://localhost:8888/callback"; // Your redirect uri
@@ -27,6 +31,20 @@ var generateRandomString = function (length) {
 var stateKey = "spotify_auth_state";
 
 var app = express();
+
+mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true }, () =>
+  console.log("Connected to DB")
+);
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", FRONTEND_ORIGIN);
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE");
+  next();
+});
 
 app
   .use(express.static(__dirname + "/public"))
@@ -146,5 +164,9 @@ app.get("/refresh_token", function (req, res) {
   });
 });
 
-console.log("Listening on 8888");
-app.listen(8888);
+app.use(express.json());
+
+app.use("/result", genreRouter);
+app.listen(PORT, function () {
+  console.log(`Listening on port ${PORT}`);
+});
