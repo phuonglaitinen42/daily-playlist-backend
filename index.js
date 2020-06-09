@@ -170,3 +170,6 @@ app.use("/result", genreRouter);
 app.listen(PORT, function () {
   console.log(`Listening on port ${PORT}`);
 });
+
+console.log("Listening on 8888");
+app.listen(8888);
