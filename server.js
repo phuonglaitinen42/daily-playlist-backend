@@ -1,4 +1,3 @@
-module.exports = (server) => {
 // moved the Spotify material to Server.js
 // to make Index.js into project-management
 var express = require("express"); // Express web server framework
@@ -11,7 +10,7 @@ require('dotenv').config();
 // Request .env details from Team-chat.
 var client_id = process.env.SPOTIFY_CLIENT_ID
 var client_secret = process.env.SPOTIFY_CLIENT_SECRET
-var redirect_uri = process.env.SPOTIFY_REDIRECT_URI
+var redirect_uri = process.env.SPOTIFY_REDIRECT_URI || 8888
 
 /**
  * Generates a random string containing numbers and letters
@@ -151,4 +150,7 @@ app.get("/refresh_token", function (req, res) {
   });
 });
 
-}
+
+
+console.log("Listening on 8888");
+app.listen(8888);
