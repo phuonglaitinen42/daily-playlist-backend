@@ -15,7 +15,7 @@ var redirect_uri = process.env.SPOTIFY_REDIRECT_URI
 
 /**
  * Generates a random string containing numbers and letters
- * @param  {number} length The length of the string
+ * @param  {number} length The length of the 
  * @return {string} The generated string
  */
 var generateRandomString = function (length) {
