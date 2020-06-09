@@ -1,12 +1,13 @@
-// moved the Spotify material to App.js
+module.exports = (server) => {
+// moved the Spotify material to Server.js
 // to make Index.js into project-management
 var express = require("express"); // Express web server framework
 var request = require("request"); // "Request" library
 var cors = require("cors");
 var querystring = require("querystring");
 var cookieParser = require("cookie-parser");
-const PORT = process.env.PORT || 3001
-
+// .env required
+require('dotenv').config();
 // Request .env details from Team-chat.
 var client_id = process.env.SPOTIFY_CLIENT_ID
 var client_secret = process.env.SPOTIFY_CLIENT_SECRET
@@ -150,5 +151,4 @@ app.get("/refresh_token", function (req, res) {
   });
 });
 
-
-module.exports = server;
+}

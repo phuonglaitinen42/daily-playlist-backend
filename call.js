@@ -22,6 +22,9 @@
 //     });
 //   });
 
+
+module.exports = (call) => {
+
 document.getElementById("search-btn");
 console.log("search-bnt").addEventListener("click", function (event) {
   event.preventDefault();
@@ -40,5 +43,4 @@ console.log("search-bnt").addEventListener("click", function (event) {
     // do something with myJson
   };
 });
-
-module.exports = call
+}
