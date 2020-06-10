@@ -6,15 +6,15 @@ var cors = require("cors");
 var querystring = require("querystring");
 var cookieParser = require("cookie-parser");
 // .env required
-require('dotenv').config();
+require("dotenv").config();
 // Request .env details from Team-chat.
-var client_id = process.env.SPOTIFY_CLIENT_ID
-var client_secret = process.env.SPOTIFY_CLIENT_SECRET
-var redirect_uri = process.env.SPOTIFY_REDIRECT_URI || 8888
+var client_id = process.env.SPOTIFY_CLIENT_ID;
+var client_secret = process.env.SPOTIFY_CLIENT_SECRET;
+var redirect_uri = process.env.SPOTIFY_REDIRECT_URI || 8888;
 
 /**
  * Generates a random string containing numbers and letters
- * @param  {number} length The length of the 
+ * @param  {number} length The length of the
  * @return {string} The generated string
  */
 var generateRandomString = function (length) {
@@ -105,7 +105,7 @@ app.get("/callback", function (req, res) {
 
         // we can also pass the token to the browser to make requests from there
         res.redirect(
-          "http://localhost:3000/quiz/#" +
+          "http://localhost:3000/playlist/#" +
             querystring.stringify({
               access_token: access_token,
               refresh_token: refresh_token,
@@ -149,8 +149,6 @@ app.get("/refresh_token", function (req, res) {
     }
   });
 });
-
-
 
 console.log("Listening on 8888");
 app.listen(8888);
