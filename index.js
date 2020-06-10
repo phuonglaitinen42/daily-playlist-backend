@@ -4,12 +4,12 @@ var express = require("express"); // Express web server framework
 const app = express();
 var request = require("request"); // "Request" library
 const genreRouter = require("./api/genre/genre.router");
-const PORT = process.env.PORT || 3001
-const FRONTEND_ORIGIN = process.env.FPORT || 3000
+const PORT = process.env.PORT || 3001;
+const FRONTEND_ORIGIN = process.env.FPORT || "http://localhost:3000";
 
 // .env required
-require('dotenv').config();
-const mongoose = require('mongoose');
+require("dotenv").config();
+const mongoose = require("mongoose");
 var URL = process.env.MONGOLAB_URI;
 // Connection to our Database
 mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true }, () =>
@@ -18,8 +18,8 @@ mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true }, () =>
 
 // making sure MongoDB is active.
 var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'DB connection error: '));
-db.on('open', console.log.bind(console, 'Connected to MongoDB!'));
+db.on("error", console.error.bind(console, "DB connection error: "));
+db.on("open", console.log.bind(console, "Connected to MongoDB!"));
 
 // Chrome does ajax calls.
 app.use((req, res, next) => {
@@ -37,10 +37,9 @@ app.use(express.json());
 
 app.use("/result", genreRouter);
 
-app.get('/api', (req, res, next) => {
-  res.send('API status: Running')
+app.get("/api", (req, res, next) => {
+  res.send("API status: Running");
 });
-
 
 app.listen(PORT, function () {
   console.log(`Listening on port ${PORT}`);
