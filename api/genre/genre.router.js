@@ -26,7 +26,6 @@ router.post("/", async (req, res) => {
     genre: req.body.genre,
   });
 
-  // save the post and catch if there is an error
   try {
     const savedResult = await result.save();
     res.status(201).json(savedResult);
