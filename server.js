@@ -48,7 +48,7 @@ app.get("/login", function (req, res) {
       querystring.stringify({
         response_type: "code",
         client_id: client_id,
-        scope: scope,
+        scope: 'user-read-private user-read-email',
         redirect_uri: redirect_uri,
         state: state,
       })
