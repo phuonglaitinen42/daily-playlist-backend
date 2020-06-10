@@ -6,6 +6,7 @@ router.get("/", async (req, res) => {
   try {
     const results = await Genre.find();
     res.json(results);
+    console.log(results);
   } catch (err) {
     res.json({ message: err });
   }
@@ -29,6 +30,7 @@ router.post("/", async (req, res) => {
   try {
     const savedResult = await result.save();
     res.status(201).json(savedResult);
+    console.log(savedResult);
   } catch (err) {
     res.status(404).json({ message: err });
   }

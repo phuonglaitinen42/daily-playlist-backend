@@ -37,6 +37,11 @@ app.use(express.json());
 
 app.use("/result", genreRouter);
 
+app.get('/api', (req, res, next) => {
+  res.send('API status: Running')
+});
+
+
 app.listen(PORT, function () {
   console.log(`Listening on port ${PORT}`);
 });
