@@ -1,16 +1,14 @@
 // Were using Index.js as a project management folder.
 // Just like we did with Login-app in Node-course.
 var express = require("express"); // Express web server framework
-var cors = require("cors");
 const app = express();
+require("dotenv").config();
 var request = require("request"); // "Request" library
 const genreRouter = require("./api/genre/genre.router");
 const PORT = process.env.PORT || 3001;
-const FRONTEND_ORIGIN =
-  process.env.FPORT || "https://daily-playlist-frontend.herokuapp.com";
-
+var cors = require("cors");
+app.use(cors());
 // .env required
-require("dotenv").config();
 const mongoose = require("mongoose");
 var URL = process.env.MONGOLAB_URI;
 // Connection to our Database
@@ -23,24 +21,16 @@ var db = mongoose.connection;
 db.on("error", console.error.bind(console, "DB connection error: "));
 db.on("open", console.log.bind(console, "Connected to MongoDB!"));
 
-// Chrome does ajax calls.
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", FRONTEND_ORIGIN);
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE");
-  next();
-});
-// app.use(cors({ origin: "https://daily-playlist-frontend.herokuapp.com/" }));
 //parse json bodies.
 app.use(express.json());
-
 app.use("/result", genreRouter);
 
 app.get("/api", (req, res, next) => {
   res.send("API status: Running");
+});
+
+app.get("/", function (req, res) {
+  res.send("Hello World");
 });
 
 app.listen(PORT, function () {
