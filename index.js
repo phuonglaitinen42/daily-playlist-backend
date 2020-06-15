@@ -7,7 +7,7 @@ var request = require("request"); // "Request" library
 const genreRouter = require("./api/genre/genre.router");
 const PORT = process.env.PORT || 3001;
 const FRONTEND_ORIGIN =
-  process.env.FPORT || "https://daily-playlist-frontend.herokuapp.com/";
+  process.env.FPORT || "https://daily-playlist-frontend.herokuapp.com";
 
 // .env required
 require("dotenv").config();
@@ -33,7 +33,7 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE");
   next();
 });
-app.use(cors({ origin: "https://daily-playlist-frontend.herokuapp.com/" }));
+// app.use(cors({ origin: "https://daily-playlist-frontend.herokuapp.com/" }));
 //parse json bodies.
 app.use(express.json());
 
