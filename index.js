@@ -1,6 +1,7 @@
 // Were using Index.js as a project management folder.
 // Just like we did with Login-app in Node-course.
 var express = require("express"); // Express web server framework
+var cors = require("cors");
 const app = express();
 var request = require("request"); // "Request" library
 const genreRouter = require("./api/genre/genre.router");
@@ -32,7 +33,7 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE");
   next();
 });
-
+app.use(cors({ origin: "https://daily-playlist-frontend.herokuapp.com/" }));
 //parse json bodies.
 app.use(express.json());
 
