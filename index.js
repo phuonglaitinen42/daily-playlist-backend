@@ -5,7 +5,8 @@ const app = express();
 var request = require("request"); // "Request" library
 const genreRouter = require("./api/genre/genre.router");
 const PORT = process.env.PORT || 3001;
-const FRONTEND_ORIGIN = process.env.FPORT || "http://localhost:3000";
+const FRONTEND_ORIGIN =
+  process.env.FPORT || "https://daily-playlist-frontend.herokuapp.com/";
 
 // .env required
 require("dotenv").config();
